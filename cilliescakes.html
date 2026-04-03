@@ -1,0 +1,1700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Cilliescakes – Houston's premier custom cake bakery. Wedding cakes, birthday cakes, cupcakes, cake pops & dessert catering. Call 281-530-1666 for a quote.">
+<title>Cilliescakes | Custom Cakes & Sweet Treats | Houston, TX</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --rose:    #e8637a;
+    --rose-dk: #c94560;
+    --blush:   #fde8ed;
+    --cream:   #fdf6f0;
+    --mocha:   #5c3d2e;
+    --mocha-lt:#8b6250;
+    --gold:    #d4a847;
+    --white:   #ffffff;
+    --gray:    #6b7280;
+    --light:   #f9f3f0;
+    --radius:  14px;
+    --shadow:  0 4px 24px rgba(92,61,46,.12);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    color: var(--mocha);
+    background: var(--white);
+    line-height: 1.65;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 999;
+    background: rgba(255,255,255,.96);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #f0ddd5;
+    padding: 0 24px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--rose-dk);
+    text-decoration: none;
+    letter-spacing: -.5px;
+  }
+  .nav-brand span { color: var(--gold); }
+
+  .nav-links {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav-links a {
+    text-decoration: none;
+    color: var(--mocha);
+    font-size: .9rem;
+    font-family: Arial, sans-serif;
+    letter-spacing: .3px;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--rose); }
+
+  .nav-cta {
+    background: var(--rose);
+    color: var(--white) !important;
+    padding: 8px 18px;
+    border-radius: 50px;
+    font-weight: 700 !important;
+    transition: background .2s !important;
+  }
+  .nav-cta:hover { background: var(--rose-dk) !important; color: var(--white) !important; }
+
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+  }
+  .hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--mocha);
+    border-radius: 2px;
+    transition: all .3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: var(--white);
+    border-bottom: 1px solid #f0ddd5;
+    padding: 20px 24px 28px;
+    z-index: 998;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    text-decoration: none;
+    color: var(--mocha);
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    padding: 8px 0;
+    border-bottom: 1px solid #f5ece8;
+  }
+  .mobile-menu a:last-child { border: none; }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #fde8ed 0%, #fdf6f0 50%, #ffecd2 100%);
+    display: flex;
+    align-items: center;
+    padding: 100px 24px 60px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #home::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 420px; height: 420px;
+    background: radial-gradient(circle, rgba(232,99,122,.18) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+  #home::after {
+    content: '';
+    position: absolute;
+    bottom: -60px; left: -60px;
+    width: 320px; height: 320px;
+    background: radial-gradient(circle, rgba(212,168,71,.15) 0%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+  }
+
+  .hero-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+
+  .hero-text { position: relative; z-index: 1; }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--rose);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: .8px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+  }
+
+  .hero-text h1 {
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.15;
+    color: var(--mocha);
+    margin-bottom: 18px;
+  }
+  .hero-text h1 em {
+    font-style: normal;
+    color: var(--rose-dk);
+  }
+
+  .hero-text p {
+    font-size: 1.1rem;
+    color: var(--mocha-lt);
+    max-width: 460px;
+    margin-bottom: 32px;
+    font-family: Arial, sans-serif;
+    line-height: 1.7;
+  }
+
+  .hero-btns {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--rose);
+    color: var(--white);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    transition: background .2s, transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 18px rgba(232,99,122,.35);
+  }
+  .btn-primary:hover {
+    background: var(--rose-dk);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,99,122,.4);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    color: var(--mocha);
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: .95rem;
+    padding: 14px 28px;
+    border-radius: 50px;
+    border: 2px solid var(--mocha);
+    transition: all .2s;
+  }
+  .btn-secondary:hover {
+    background: var(--mocha);
+    color: var(--white);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    margin-top: 40px;
+    padding-top: 32px;
+    border-top: 1px solid rgba(92,61,46,.12);
+  }
+  .stat { text-align: left; }
+  .stat-num {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--rose-dk);
+    line-height: 1;
+  }
+  .stat-label {
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    color: var(--mocha-lt);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-top: 4px;
+  }
+
+  /* cake illustration */
+  .hero-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cake-card {
+    background: var(--white);
+    border-radius: 24px;
+    padding: 36px 32px;
+    box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 360px;
+    text-align: center;
+    position: relative;
+  }
+
+  .cake-emoji {
+    font-size: 5rem;
+    line-height: 1;
+    margin-bottom: 16px;
+    display: block;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.15));
+    animation: float 3.5s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .cake-card h3 {
+    font-size: 1.25rem;
+    color: var(--mocha);
+    margin-bottom: 8px;
+  }
+  .cake-card p {
+    font-family: Arial, sans-serif;
+    font-size: .88rem;
+    color: var(--gray);
+    margin-bottom: 20px;
+  }
+
+  .cake-flavors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+  }
+  .flavor-tag {
+    background: var(--blush);
+    color: var(--rose-dk);
+    font-family: Arial, sans-serif;
+    font-size: .75rem;
+    font-weight: 600;
+    padding: 4px 12px;
+    border-radius: 50px;
+  }
+
+  .floating-badge {
+    position: absolute;
+    background: var(--gold);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: .72rem;
+    font-weight: 700;
+    padding: 6px 12px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(212,168,71,.4);
+    white-space: nowrap;
+  }
+  .fb-tl { top: -12px; left: -16px; }
+  .fb-br { bottom: -12px; right: -16px; }
+
+  /* ── SECTIONS SHARED ── */
+  section { padding: 90px 24px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+
+  .section-label {
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--rose);
+    margin-bottom: 10px;
+  }
+
+  .section-title {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    color: var(--mocha);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .section-sub {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--mocha-lt);
+    max-width: 560px;
+    line-height: 1.7;
+  }
+
+  .divider {
+    width: 50px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    border-radius: 2px;
+    margin: 18px 0 32px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--cream); }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: center;
+  }
+
+  .about-visual {
+    position: relative;
+  }
+
+  .about-card-main {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 40px 32px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+  }
+
+  .about-icon { font-size: 4rem; margin-bottom: 12px; display: block; }
+
+  .about-card-main h3 {
+    font-size: 1.3rem;
+    color: var(--mocha);
+    margin-bottom: 8px;
+  }
+
+  .about-card-main p {
+    font-family: Arial, sans-serif;
+    font-size: .9rem;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+
+  .about-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+    justify-content: center;
+  }
+  .about-pill {
+    background: var(--blush);
+    color: var(--rose-dk);
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    font-weight: 600;
+    padding: 5px 14px;
+    border-radius: 50px;
+  }
+
+  .about-accolade {
+    position: absolute;
+    top: -18px; right: -18px;
+    background: var(--rose);
+    color: var(--white);
+    font-family: Arial, sans-serif;
+    font-size: .75rem;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(232,99,122,.35);
+    white-space: nowrap;
+  }
+
+  .about-text {}
+  .about-text p {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--mocha-lt);
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .about-values {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-top: 28px;
+  }
+  .value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--white);
+    border-radius: 10px;
+    padding: 14px;
+    box-shadow: 0 2px 8px rgba(92,61,46,.07);
+  }
+  .value-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .value-text {}
+  .value-text strong {
+    display: block;
+    font-size: .88rem;
+    color: var(--mocha);
+    margin-bottom: 2px;
+  }
+  .value-text span {
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    color: var(--gray);
+  }
+
+  /* ── SERVICES ── */
+  #services { background: var(--white); }
+
+  .services-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    margin-bottom: 48px;
+    flex-wrap: wrap;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .service-card {
+    background: var(--light);
+    border-radius: var(--radius);
+    padding: 32px 24px;
+    border: 1.5px solid transparent;
+    transition: all .3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s;
+  }
+  .service-card:hover {
+    border-color: var(--rose);
+    background: var(--white);
+    box-shadow: var(--shadow);
+    transform: translateY(-4px);
+  }
+  .service-card:hover::after { transform: scaleX(1); }
+
+  .service-icon { font-size: 2.4rem; margin-bottom: 14px; display: block; }
+  .service-card h3 {
+    font-size: 1.1rem;
+    color: var(--mocha);
+    margin-bottom: 10px;
+  }
+  .service-card p {
+    font-family: Arial, sans-serif;
+    font-size: .88rem;
+    color: var(--gray);
+    line-height: 1.65;
+    margin-bottom: 14px;
+  }
+  .service-price {
+    font-family: Arial, sans-serif;
+    font-size: .82rem;
+    font-weight: 700;
+    color: var(--rose-dk);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ── FLAVORS ── */
+  #flavors { background: var(--blush); }
+
+  .flavors-header { text-align: center; margin-bottom: 48px; }
+  .flavors-header .divider { margin: 18px auto 0; }
+
+  .flavors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+  }
+
+  .flavor-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 24px 18px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(92,61,46,.08);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .flavor-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+
+  .flavor-card-icon { font-size: 2.2rem; margin-bottom: 10px; display: block; }
+  .flavor-card h4 {
+    font-size: 1rem;
+    color: var(--mocha);
+    margin-bottom: 6px;
+  }
+  .flavor-card p {
+    font-family: Arial, sans-serif;
+    font-size: .8rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  .flavors-cta {
+    text-align: center;
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 2px 12px rgba(92,61,46,.08);
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .flavors-cta p {
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: var(--mocha-lt);
+  }
+  .flavors-cta strong { color: var(--mocha); }
+
+  /* ── HOW IT WORKS ── */
+  #process { background: var(--white); }
+
+  .process-header { text-align: center; margin-bottom: 56px; }
+  .process-header .divider { margin: 18px auto 0; }
+
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    position: relative;
+  }
+  .process-steps::before {
+    content: '';
+    position: absolute;
+    top: 36px;
+    left: calc(12.5% + 16px);
+    right: calc(12.5% + 16px);
+    height: 2px;
+    background: linear-gradient(90deg, var(--rose), var(--gold));
+    z-index: 0;
+  }
+
+  .step {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+  .step-num {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dk));
+    color: var(--white);
+    font-size: 1.5rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 16px rgba(232,99,122,.35);
+    position: relative;
+    z-index: 1;
+  }
+  .step h4 {
+    font-size: 1rem;
+    color: var(--mocha);
+    margin-bottom: 8px;
+  }
+  .step p {
+    font-family: Arial, sans-serif;
+    font-size: .85rem;
+    color: var(--gray);
+    line-height: 1.6;
+  }
+
+  /* ── TESTIMONIALS ── */
+  #testimonials { background: var(--light); }
+
+  .testimonials-header { text-align: center; margin-bottom: 48px; }
+  .testimonials-header .divider { margin: 18px auto 0; }
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .testi-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    box-shadow: 0 2px 12px rgba(92,61,46,.08);
+    position: relative;
+  }
+  .testi-card::before {
+    content: '\201C';
+    font-size: 5rem;
+    color: var(--blush);
+    position: absolute;
+    top: -10px; left: 16px;
+    line-height: 1;
+    font-family: Georgia, serif;
+  }
+
+  .stars {
+    color: var(--gold);
+    font-size: 1rem;
+    letter-spacing: 2px;
+    margin-bottom: 14px;
+  }
+
+  .testi-card p {
+    font-family: Arial, sans-serif;
+    font-size: .9rem;
+    color: var(--mocha-lt);
+    line-height: 1.7;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .testi-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .author-avatar {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: var(--blush);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .author-info strong {
+    display: block;
+    font-size: .88rem;
+    color: var(--mocha);
+  }
+  .author-info span {
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    color: var(--gray);
+  }
+
+  /* ── OCCASIONS ── */
+  #occasions { background: var(--cream); }
+
+  .occasions-header { text-align: center; margin-bottom: 48px; }
+  .occasions-header .divider { margin: 18px auto 0; }
+
+  .occasions-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .occasion-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 28px 22px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(92,61,46,.07);
+    transition: transform .25s, box-shadow .25s;
+  }
+  .occasion-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .occasion-icon { font-size: 2.6rem; margin-bottom: 12px; display: block; }
+  .occasion-card h4 {
+    font-size: 1rem;
+    color: var(--mocha);
+    margin-bottom: 6px;
+  }
+  .occasion-card p {
+    font-family: Arial, sans-serif;
+    font-size: .82rem;
+    color: var(--gray);
+    line-height: 1.55;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--mocha); color: var(--white); }
+
+  #contact .section-label { color: var(--gold); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-sub { color: rgba(255,255,255,.75); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: start;
+    margin-top: 48px;
+  }
+
+  .contact-info {}
+  .contact-info h3 {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .ci-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .ci-text strong {
+    display: block;
+    font-size: .85rem;
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 3px;
+  }
+  .ci-text span, .ci-text a {
+    font-family: Arial, sans-serif;
+    font-size: .95rem;
+    color: rgba(255,255,255,.85);
+    text-decoration: none;
+  }
+  .ci-text a:hover { color: var(--gold); }
+
+  .hours-grid {
+    background: rgba(255,255,255,.07);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    margin-top: 28px;
+  }
+  .hours-grid h4 {
+    font-size: .9rem;
+    color: var(--gold);
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    margin-bottom: 12px;
+  }
+  .hours-row {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: .85rem;
+    color: rgba(255,255,255,.8);
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .hours-row:last-child { border: none; }
+  .hours-row.today { color: var(--gold); font-weight: 700; }
+
+  .contact-form {}
+  .contact-form h3 {
+    font-size: 1.2rem;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .form-group { margin-bottom: 18px; }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  label {
+    display: block;
+    font-family: Arial, sans-serif;
+    font-size: .82rem;
+    color: rgba(255,255,255,.75);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: .3px;
+  }
+
+  input, select, textarea {
+    width: 100%;
+    background: rgba(255,255,255,.1);
+    border: 1.5px solid rgba(255,255,255,.2);
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-family: Arial, sans-serif;
+    font-size: .92rem;
+    color: var(--white);
+    outline: none;
+    transition: border-color .2s, background .2s;
+    appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: rgba(255,255,255,.4); }
+  input:focus, select:focus, textarea:focus {
+    border-color: var(--gold);
+    background: rgba(255,255,255,.14);
+  }
+  select option { background: var(--mocha); color: var(--white); }
+  textarea { resize: vertical; min-height: 110px; }
+
+  .form-submit {
+    width: 100%;
+    background: linear-gradient(135deg, var(--rose), var(--rose-dk));
+    color: var(--white);
+    border: none;
+    border-radius: 50px;
+    padding: 15px 28px;
+    font-family: Arial, sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 4px 16px rgba(232,99,122,.4);
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+  .form-submit:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(232,99,122,.5);
+  }
+
+  .form-note {
+    font-family: Arial, sans-serif;
+    font-size: .78rem;
+    color: rgba(255,255,255,.5);
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #3d251a;
+    color: rgba(255,255,255,.7);
+    padding: 50px 24px 28px;
+  }
+
+  .footer-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 40px;
+  }
+
+  .footer-brand {}
+  .footer-brand .nav-brand {
+    font-size: 1.6rem;
+    display: block;
+    margin-bottom: 12px;
+  }
+  .footer-brand p {
+    font-family: Arial, sans-serif;
+    font-size: .88rem;
+    line-height: 1.7;
+    color: rgba(255,255,255,.6);
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+  }
+  .social-btn {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 1rem;
+    color: rgba(255,255,255,.8);
+    transition: background .2s, color .2s;
+    border: 1px solid rgba(255,255,255,.15);
+  }
+  .social-btn:hover {
+    background: var(--rose);
+    color: var(--white);
+    border-color: var(--rose);
+  }
+
+  .footer-col h5 {
+    font-size: .88rem;
+    font-family: Arial, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: var(--gold);
+    margin-bottom: 16px;
+  }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 8px; }
+  .footer-col ul li a {
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-size: .88rem;
+    color: rgba(255,255,255,.6);
+    transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold); }
+
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,.08);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-family: Arial, sans-serif;
+    font-size: .8rem;
+    color: rgba(255,255,255,.4);
+  }
+
+  /* ── SUCCESS MESSAGE ── */
+  .form-success {
+    display: none;
+    background: rgba(46,160,67,.15);
+    border: 1.5px solid rgba(46,160,67,.4);
+    border-radius: 10px;
+    padding: 16px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    color: #7be0a0;
+    margin-top: 16px;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 960px) {
+    .hero-inner { grid-template-columns: 1fr; gap: 40px; }
+    .hero-visual { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: repeat(2, 1fr); }
+    .flavors-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: repeat(2, 1fr); }
+    .process-steps::before { display: none; }
+    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .occasions-grid { grid-template-columns: repeat(2, 1fr); }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (max-width: 640px) {
+    .nav-links { display: none; }
+    .hamburger { display: flex; }
+    section { padding: 64px 20px; }
+    .hero-stats { gap: 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .flavors-grid { grid-template-columns: 1fr 1fr; }
+    .process-steps { grid-template-columns: 1fr 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .occasions-grid { grid-template-columns: 1fr 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .about-values { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 32px; }
+    .footer-bottom { text-align: center; flex-direction: column; }
+    .services-intro { flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 380px) {
+    .flavors-grid { grid-template-columns: 1fr; }
+    .occasions-grid { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#home" class="nav-brand">Cillies<span>Cakes</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#flavors">Flavors</a></li>
+    <li><a href="#occasions">Occasions</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact" class="nav-cta">Get a Quote</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#services" onclick="closeMobile()">Services</a>
+  <a href="#flavors" onclick="closeMobile()">Flavors</a>
+  <a href="#occasions" onclick="closeMobile()">Occasions</a>
+  <a href="#testimonials" onclick="closeMobile()">Reviews</a>
+  <a href="#contact" onclick="closeMobile()" style="color:var(--rose);font-weight:700;">Get a Quote ✨</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge">🎂 Houston's Custom Cake Bakery</div>
+      <h1>
+        Crafted with Love,<br>
+        <em>Designed for Your</em><br>
+        Special Moments
+      </h1>
+      <p>
+        From dream wedding cakes to show-stopping birthday creations — Cilliescakes brings your vision to life with freshly baked, beautifully designed custom cakes and sweet treats in Houston, TX.
+      </p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">🎂 Order a Custom Cake</a>
+        <a href="tel:2815301666" class="btn-secondary">📞 281-530-1666</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Happy Customers</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">10+</div>
+          <div class="stat-label">Years Baking</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">5★</div>
+          <div class="stat-label">Average Rating</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="cake-card">
+        <div class="floating-badge fb-tl">✨ Freshly Baked Daily</div>
+        <span class="cake-emoji">🎂</span>
+        <h3>Your Dream Cake Awaits</h3>
+        <p>Fully custom designs for every occasion</p>
+        <div class="cake-flavors">
+          <span class="flavor-tag">Vanilla</span>
+          <span class="flavor-tag">Chocolate</span>
+          <span class="flavor-tag">Red Velvet</span>
+          <span class="flavor-tag">Tropical</span>
+          <span class="flavor-tag">Lemon</span>
+          <span class="flavor-tag">+ More</span>
+        </div>
+        <div class="floating-badge fb-br">📍 Houston, TX</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-visual">
+        <div class="about-card-main">
+          <div class="about-accolade">⭐ Houston's Favorite Bakery</div>
+          <span class="about-icon">👩‍🍳</span>
+          <h3>Passionate Baker & Cake Artist</h3>
+          <p>
+            Every cake is a canvas. With a deep love for baking and an eye for artistry, the team at Cilliescakes pours creativity and heart into every single order — no two cakes are ever exactly alike.
+          </p>
+          <div class="about-pills">
+            <span class="about-pill">Custom Designs</span>
+            <span class="about-pill">Freshly Baked</span>
+            <span class="about-pill">Premium Ingredients</span>
+            <span class="about-pill">Made with Love</span>
+          </div>
+        </div>
+      </div>
+      <div class="about-text">
+        <div class="section-label">Our Story</div>
+        <h2 class="section-title">A Baker's Passion, Turned into Sweet Creations</h2>
+        <div class="divider"></div>
+        <p>
+          Cilliescakes began as a heartfelt passion for baking and a desire to make every celebration unforgettable. Based in Houston, TX, we've been bringing custom cake dreams to life for families, couples, and businesses throughout the community.
+        </p>
+        <p>
+          We believe a cake is so much more than dessert — it's the centerpiece of your most cherished memories. That's why every order receives personalized attention from design to delivery, ensuring your cake is as delicious as it is beautiful.
+        </p>
+        <p>
+          From intricate wedding tiers to whimsical children's birthday cakes, our creative cake artists work with you every step of the way. We use only premium, fresh ingredients to make sure every bite is as memorable as the occasion itself.
+        </p>
+        <div class="about-values">
+          <div class="value-item">
+            <span class="value-icon">🌟</span>
+            <div class="value-text">
+              <strong>Exceptional Quality</strong>
+              <span>Premium ingredients, every time</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🎨</span>
+            <div class="value-text">
+              <strong>Creative Designs</strong>
+              <span>Unique art for every occasion</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">💕</span>
+            <div class="value-text">
+              <strong>Made with Love</strong>
+              <span>Baked fresh for your order</span>
+            </div>
+          </div>
+          <div class="value-item">
+            <span class="value-icon">🤝</span>
+            <div class="value-text">
+              <strong>Personal Service</strong>
+              <span>Consultation for every order</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-inner">
+    <div class="services-intro">
+      <div>
+        <div class="section-label">What We Offer</div>
+        <h2 class="section-title">Sweet Creations for<br>Every Celebration</h2>
+        <div class="divider"></div>
+        <p class="section-sub">From intimate gatherings to grand celebrations, we craft custom cakes and sweet treats that leave lasting impressions.</p>
+      </div>
+      <a href="#contact" class="btn-primary" style="flex-shrink:0;">Get a Custom Quote →</a>
+    </div>
+    <div class="services-grid">
+      <div class="service-card">
+        <span class="service-icon">💍</span>
+        <h3>Wedding Cakes</h3>
+        <p>Elegant, multi-tiered masterpieces for your perfect day. We offer full consultations, tastings, and bespoke designs to match your wedding theme.</p>
+        <div class="service-price">✦ Starting from $200 · Custom quote available</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🎂</span>
+        <h3>Birthday Cakes</h3>
+        <p>Personalized birthday cakes for all ages — from kids' character cakes to elegant adult milestone creations. Any theme, any flavor.</p>
+        <div class="service-price">✦ Starting from $65 · Tiers priced separately</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🧁</span>
+        <h3>Cupcakes</h3>
+        <p>Beautifully decorated cupcakes perfect for parties, corporate events, or just treating yourself. Available by the dozen in custom flavors.</p>
+        <div class="service-price">✦ From $35/dozen · Custom decorations available</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🍭</span>
+        <h3>Cake Pops</h3>
+        <p>Adorable, individually decorated cake pops — ideal for party favors, dessert tables, and event giveaways. Customizable to any theme or color.</p>
+        <div class="service-price">✦ From $3 each · Bulk orders welcome</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">🍽️</span>
+        <h3>Dessert Catering</h3>
+        <p>Full dessert table setups and catering for weddings, corporate events, baby showers, and parties. We handle the sweets so you enjoy the moment.</p>
+        <div class="service-price">✦ Custom packages available · Inquiry required</div>
+      </div>
+      <div class="service-card">
+        <span class="service-icon">✨</span>
+        <h3>Custom Cake Toppers</h3>
+        <p>Personalized edible and non-edible cake toppers — names, monograms, character figures, floral arrangements, and more. The perfect finishing touch.</p>
+        <div class="service-price">✦ From $15 · Add-on to any cake order</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLAVORS -->
+<section id="flavors">
+  <div class="section-inner">
+    <div class="flavors-header">
+      <div class="section-label">Our Signature Flavors</div>
+      <h2 class="section-title">Taste the Difference in Every Bite</h2>
+      <p style="font-family:Arial,sans-serif;font-size:1rem;color:var(--mocha-lt);max-width:520px;margin:.8rem auto 0;line-height:1.7;">Each cake is baked fresh to order using premium ingredients. Choose from our signature flavors or request a custom combination.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="flavors-grid">
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🌴</span>
+        <h4>Tropical Paradise</h4>
+        <p>A vibrant blend of coconut, pineapple, and passion fruit — like a vacation in every slice.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🍫</span>
+        <h4>Hershey's Vanilla Chocolate</h4>
+        <p>A classic pairing of rich Hershey's chocolate layers with smooth, creamy vanilla buttercream.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">❤️</span>
+        <h4>I Love Chocolate</h4>
+        <p>A chocolate lover's dream — deep, fudgy chocolate cake with silky chocolate ganache frosting.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🍮</span>
+        <h4>Chocolate Cream</h4>
+        <p>Moist chocolate sponge layered with luscious whipped cream filling and a glossy chocolate glaze.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🍋</span>
+        <h4>Lemon Bliss</h4>
+        <p>Bright, zesty lemon curd between light sponge layers, finished with lemon buttercream.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🍓</span>
+        <h4>Strawberries & Cream</h4>
+        <p>Fresh strawberry compote layered with fluffy vanilla cream for a fresh, fruity celebration cake.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🔴</span>
+        <h4>Red Velvet</h4>
+        <p>Velvety, subtly cocoa-flavored layers with tangy cream cheese frosting — always a crowd favorite.</p>
+      </div>
+      <div class="flavor-card">
+        <span class="flavor-card-icon">🎃</span>
+        <h4>Seasonal Specials</h4>
+        <p>Pumpkin spice in fall, peppermint in winter, and holiday-themed creations throughout the year.</p>
+      </div>
+    </div>
+    <div class="flavors-cta">
+      <div>
+        <strong>Have a special flavor request?</strong>
+        <p>We love creating custom flavor combinations! Reach out and let's make something truly unique for your event.</p>
+      </div>
+      <a href="#contact" class="btn-primary">Request a Custom Flavor →</a>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="process">
+  <div class="section-inner">
+    <div class="process-header">
+      <div class="section-label">How to Order</div>
+      <h2 class="section-title">Your Custom Cake in 4 Easy Steps</h2>
+      <p style="font-family:Arial,sans-serif;font-size:1rem;color:var(--mocha-lt);max-width:520px;margin:.8rem auto 0;line-height:1.7;">Please allow a minimum of 2 weeks' notice for most orders, and 4–6 weeks for wedding cakes.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Get in Touch</h4>
+        <p>Call, email, or fill out our quote form with your event date, occasion, and cake ideas.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Consultation & Design</h4>
+        <p>We'll discuss your vision, flavors, size, and design details. Wedding orders include a tasting session.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Confirm & Deposit</h4>
+        <p>Approve your design and place a deposit to secure your date. Your cake is then scheduled for baking.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Pickup or Delivery</h4>
+        <p>Your freshly baked, beautifully decorated cake is ready for pickup or can be delivered to your venue.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OCCASIONS -->
+<section id="occasions">
+  <div class="section-inner">
+    <div class="occasions-header">
+      <div class="section-label">Perfect For Every Event</div>
+      <h2 class="section-title">We Bake for All of Life's<br>Sweet Milestones</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="occasions-grid">
+      <div class="occasion-card">
+        <span class="occasion-icon">💍</span>
+        <h4>Weddings</h4>
+        <p>Breathtaking tiered cakes and dessert catering to make your wedding day absolutely unforgettable.</p>
+      </div>
+      <div class="occasion-card">
+        <span class="occasion-icon">🎂</span>
+        <h4>Birthdays</h4>
+        <p>From first birthdays to milestone 50ths — fun, themed, and personalized for every age.</p>
+      </div>
+      <div class="occasion-card">
+        <span class="occasion-icon">👶</span>
+        <h4>Baby Showers</h4>
+        <p>Adorable gender reveal cakes, cupcake towers, and sweet treats for new arrivals.</p>
+      </div>
+      <div class="occasion-card">
+        <span class="occasion-icon">🎓</span>
+        <h4>Graduations</h4>
+        <p>Celebrate academic achievements with custom graduation cakes featuring school colors and caps.</p>
+      </div>
+      <div class="occasion-card">
+        <span class="occasion-icon">🏢</span>
+        <h4>Corporate Events</h4>
+        <p>Professional branded cakes and dessert platters for company parties, launches, and meetings.</p>
+      </div>
+      <div class="occasion-card">
+        <span class="occasion-icon">🎉</span>
+        <h4>All Celebrations</h4>
+        <p>Anniversaries, quinceañeras, holidays, retirement parties — no event is too big or too small.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="testimonials-header">
+      <div class="section-label">Customer Love</div>
+      <h2 class="section-title">What Our Customers Are Saying</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"Cilliescakes made our wedding cake absolutely stunning. The design was perfect and it tasted even better than it looked. We received so many compliments — everyone was asking where we got it!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">👰</div>
+          <div class="author-info">
+            <strong>Maria &amp; James T.</strong>
+            <span>Wedding Cake · Houston, TX</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"I ordered a custom birthday cake for my daughter's 5th birthday with her favorite cartoon character. It was beyond what I imagined! She was so excited and all the kids loved it. Will definitely order again!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">👨‍👧</div>
+          <div class="author-info">
+            <strong>David R.</strong>
+            <span>Birthday Cake · Katy, TX</span>
+          </div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <p>"The cupcakes and cake pops for our company event were a huge hit! Beautiful presentation, delicious flavors, and everything arrived on time. The team is so professional and friendly — highly recommend!"</p>
+        <div class="testi-author">
+          <div class="author-avatar">💼</div>
+          <div class="author-info">
+            <strong>Sandra M.</strong>
+            <span>Corporate Event · Sugar Land, TX</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in Touch</div>
+    <h2 class="section-title">Ready to Order Your Dream Cake?</h2>
+    <p class="section-sub">Fill out the form below or give us a call and we'll get back to you to discuss your perfect creation. Please allow at least 2 weeks' notice for orders.</p>
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <div class="contact-item">
+          <div class="ci-icon">📞</div>
+          <div class="ci-text">
+            <strong>Phone</strong>
+            <a href="tel:2815301666">281-530-1666</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">✉️</div>
+          <div class="ci-text">
+            <strong>Email</strong>
+            <a href="mailto:Cilliescakes@gmail.com">Cilliescakes@gmail.com</a>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">📍</div>
+          <div class="ci-text">
+            <strong>Location</strong>
+            <span>Houston, TX &amp; surrounding areas</span>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="ci-icon">👥</div>
+          <div class="ci-text">
+            <strong>Facebook</strong>
+            <span>Cillies Cakes of Houston</span>
+          </div>
+        </div>
+        <div class="hours-grid">
+          <h4>📅 Business Hours</h4>
+          <div class="hours-row"><span>Tuesday – Friday</span><span>9:00 AM – 6:00 PM</span></div>
+          <div class="hours-row"><span>Saturday</span><span>9:00 AM – 4:00 PM</span></div>
+          <div class="hours-row"><span>Sunday</span><span>By Appointment</span></div>
+          <div class="hours-row"><span>Monday</span><span>Closed</span></div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Request a Custom Quote</h3>
+        <form id="quoteForm" onsubmit="handleSubmit(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Jane" required>
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Smith" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="jane@example.com" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(281) 555-0123">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="occasion">Occasion</label>
+              <select id="occasion" name="occasion" required>
+                <option value="" disabled selected>Select occasion</option>
+                <option>Wedding</option>
+                <option>Birthday</option>
+                <option>Baby Shower</option>
+                <option>Graduation</option>
+                <option>Corporate Event</option>
+                <option>Anniversary</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="date">Event Date</label>
+              <input type="date" id="date" name="date" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="guests">Number of Guests</label>
+            <select id="guests" name="guests">
+              <option value="" disabled selected>Approx. guest count</option>
+              <option>Under 20</option>
+              <option>20–50</option>
+              <option>50–100</option>
+              <option>100–200</option>
+              <option>200+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Tell Us About Your Cake Vision</label>
+            <textarea id="message" name="message" placeholder="Describe your dream cake — theme, colors, flavors, special requests..."></textarea>
+          </div>
+          <button type="submit" class="form-submit">
+            🎂 Send My Quote Request
+          </button>
+          <p class="form-note">We respond within 24 hours · Minimum 2-week notice required</p>
+          <div class="form-success" id="formSuccess">
+            🎉 Thank you! We've received your request and will be in touch within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#home" class="nav-brand">Cillies<span>Cakes</span></a>
+        <p>Houston's premier custom cake bakery, crafting beautiful and delicious cakes for every milestone and occasion. Made fresh, made with love.</p>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="Facebook">f</a>
+          <a href="#" class="social-btn" aria-label="Instagram" style="font-style:italic;">in</a>
+          <a href="tel:2815301666" class="social-btn" aria-label="Phone">📞</a>
+          <a href="mailto:Cilliescakes@gmail.com" class="social-btn" aria-label="Email">✉</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Our Services</h5>
+        <ul>
+          <li><a href="#services">Wedding Cakes</a></li>
+          <li><a href="#services">Birthday Cakes</a></li>
+          <li><a href="#services">Cupcakes</a></li>
+          <li><a href="#services">Cake Pops</a></li>
+          <li><a href="#services">Dessert Catering</a></li>
+          <li><a href="#services">Custom Cake Toppers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Quick Links</h5>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#flavors">Cake Flavors</a></li>
+          <li><a href="#occasions">Occasions</a></li>
+          <li><a href="#process">How to Order</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Cilliescakes · Houston, TX · All rights reserved</span>
+      <span>📞 <a href="tel:2815301666" style="color:rgba(255,255,255,.5);text-decoration:none;">281-530-1666</a> · ✉ <a href="mailto:Cilliescakes@gmail.com" style="color:rgba(255,255,255,.5);text-decoration:none;">Cilliescakes@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  function closeMobile() {
+    mobileMenu.classList.remove('open');
+  }
+
+  // Close mobile menu on outside click
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+      mobileMenu.classList.remove('open');
+    }
+  });
+
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        const offset = 70;
+        const top = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top, behavior: 'smooth' });
+      }
+    });
+  });
+
+  // Navbar shadow on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    if (window.scrollY > 10) {
+      nav.style.boxShadow = '0 4px 20px rgba(92,61,46,.12)';
+    } else {
+      nav.style.boxShadow = 'none';
+    }
+  });
+
+  // Form submission
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.form-submit');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    setTimeout(() => {
+      document.getElementById('formSuccess').style.display = 'block';
+      e.target.reset();
+      btn.disabled = false;
+      btn.innerHTML = '🎂 Send My Quote Request';
+    }, 800);
+  }
+
+  // Intersection observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  const cards = document.querySelectorAll(
+    '.service-card, .flavor-card, .testi-card, .occasion-card, .step, .value-item'
+  );
+  cards.forEach((card, i) => {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = `opacity .5s ease ${i * 0.06}s, transform .5s ease ${i * 0.06}s`;
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 11%;
+
+    --card: 40 20% 98%;
+    --card-foreground: 0 0% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 11%;
+
+    --primary: 161 42% 30%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 40 52% 48%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 150 20% 96%;
+    --muted-foreground: 0 0% 36%;
+
+    --accent: 150 40% 96%;
+    --accent-foreground: 161 42% 30%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 150 15% 88%;
+    --input: 150 15% 88%;
+    --ring: 161 42% 30%;
+
+    --radius: 0.75rem;
+
+    --sage-tint: 150 40% 96%;
+    --warm-off-white: 40 33% 98%;
+    --gold: 40 52% 48%;
+    --text-body: 0 0% 36%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow-x: clip;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', serif;
+  }
+  section[id] {
+    scroll-margin-top: 68px;
+  }
+}
+
+/* Scroll reveal animations */
+.rv, .rv-l, .rv-r, .rv-s {
+  opacity: 0;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.rv { transform: translateY(40px); }
+.rv-l { transform: translateX(-40px); }
+.rv-r { transform: translateX(40px); }
+.rv-s { transform: scale(0.92); }
+.rv.in, .rv-l.in, .rv-r.in, .rv-s.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Floating animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-float-delay {
+  animation: float 3s ease-in-out 1.5s infinite;
+}
+
+/* Marquee */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
+/* Scroll indicator bounce */
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(8px); opacity: 0.5; }
+}
+.animate-scroll-bounce {
+  animation: scroll-bounce 2s ease-in-out infinite;
+}
+
+/* 3D card shine */
+.card-shine {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255,255,255,0.15) 0%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+[data-tilt]:hover .card-shine {
+  opacity: 1;
+}

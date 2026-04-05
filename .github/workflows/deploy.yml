@@ -5,6 +5,7 @@ on:
     branches: [main]
     paths:
       - "cilliescake2/**"
+  workflow_dispatch:
 
 permissions:
   contents: read

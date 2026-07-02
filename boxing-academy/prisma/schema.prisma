@@ -1,0 +1,126 @@
+// Cactus Boxing Gym — Prisma schema.
+// High-level model documented in docs/DATABASE_SCHEMA.md.
+// Phase 1 (MVP / P0): Lead, Program, ClassSession, Coach, PricingTier.
+// Phase 2 adds: Testimonial, BlogPost, AdminUser.
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ── Enums ───────────────────────────────────────────────
+
+enum LeadSource {
+  TRIAL
+  CONTACT
+  MEMBERSHIP
+}
+
+enum LeadStatus {
+  NEW
+  CONTACTED
+  CONVERTED
+  CLOSED
+}
+
+enum ProgramLevel {
+  BEGINNER
+  INTERMEDIATE
+  ADVANCED
+  ALL
+}
+
+enum AgeGroup {
+  YOUTH
+  ADULT
+  ALL
+}
+
+enum DayOfWeek {
+  MON
+  TUE
+  WED
+  THU
+  FRI
+  SAT
+  SUN
+}
+
+enum PriceInterval {
+  MONTH
+  WEEK
+  DROP_IN
+}
+
+// ── Models ──────────────────────────────────────────────
+
+/// Primary conversion asset — captured from the trial/contact/membership forms.
+model Lead {
+  id               String     @id @default(uuid())
+  name             String
+  email            String
+  phone            String
+  preferredProgram String?
+  message          String?
+  source           LeadSource @default(TRIAL)
+  status           LeadStatus @default(NEW)
+  createdAt        DateTime   @default(now())
+
+  @@index([createdAt])
+  @@index([status])
+}
+
+model Program {
+  id           String         @id @default(uuid())
+  slug         String         @unique
+  name         String
+  description  String
+  level        ProgramLevel   @default(ALL)
+  ageGroup     AgeGroup       @default(ALL)
+  isWomensOnly Boolean        @default(false)
+  order        Int            @default(0)
+  isActive     Boolean        @default(true)
+  sessions     ClassSession[]
+}
+
+model Coach {
+  id             String         @id @default(uuid())
+  slug           String         @unique
+  name           String
+  bio            String
+  record         String?
+  certifications String[]
+  headshotUrl    String?
+  order          Int            @default(0)
+  sessions       ClassSession[]
+}
+
+model ClassSession {
+  id        String    @id @default(uuid())
+  programId String
+  program   Program   @relation(fields: [programId], references: [id], onDelete: Cascade)
+  coachId   String?
+  coach     Coach?    @relation(fields: [coachId], references: [id], onDelete: SetNull)
+  dayOfWeek DayOfWeek
+  startTime String // "06:00"
+  endTime   String // "07:00"
+  capacity  Int?
+
+  @@index([dayOfWeek, startTime])
+  @@index([programId])
+}
+
+model PricingTier {
+  id               String        @id @default(uuid())
+  name             String
+  price            Int // whole currency units (e.g. dollars)
+  interval         PriceInterval @default(MONTH)
+  features         String[]
+  isHighlighted    Boolean       @default(false)
+  cancellationNote String?
+  order            Int           @default(0)
+}
